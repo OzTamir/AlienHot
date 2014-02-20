@@ -7,6 +7,7 @@ LIMIT = 5
 
 @app.route('/change_amount', methods=['POST'])
 def change_amount():
+	'''Gets called when the user invoke the "Change Amount" button'''
 	global LIMIT
 	if int(request.form['amount']) > 0:
 		LIMIT = int(request.form['amount'])
@@ -14,6 +15,7 @@ def change_amount():
 
 @app.route('/add', methods=['POST'])
 def add_sub():
+	'''Gets called when the user press the "Add!" button'''
 	if str(request.form['subreddit']) != '':
 		subs.append(str(request.form['subreddit']))
 	return redirect(url_for('index'))
@@ -24,6 +26,6 @@ def index():
 	return render_template('index.html', subreddits = sub_list, lst = sub_msg)
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=5000)
 
 
