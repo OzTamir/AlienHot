@@ -2,15 +2,28 @@
 {% block content %}
 <div class="jumbo">
     <center>
-    <h1>Reddit Summery</h1>
-    <hr>
+    <img src="{{ url_for('static', filename='img/snoo.png') }}">
+    <h1>AlienHot</h1>
+    <h4>{{ lst }}</h4>
+	<form action="{{ url_for('add_sub') }}" method=post class=add_sub>
+		<dd><input type=text name=subreddit><input type=submit value=Add!>
+		</dl>
+	</form>
 	    {% for sub in subreddits %}
+	    	<hr>
 	    	<h3><b>{{ sub.reddit_name }}</b></h3>
 	    	{% for post in sub.submissions %}
 	        	<a href="{{ post.url }}">{{ post.title }}</a>
+	        	<br>
 	        {% endfor %}
-	        <hr>
+	        <br>
 	    {% endfor %}
+	<hr>
+	<form action="{{ url_for('change_amount') }}" method=post class=change_amount>
+		<dt>By default, AlienHot fetch the top 5 posts - but you can change it!
+		<dd><input type=text name=amount><input type=submit value=Change Amount>
+		</dl>
+	</form>
     </center>
 </div>
 {% endblock %}

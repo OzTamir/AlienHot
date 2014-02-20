@@ -13,12 +13,16 @@ class Submission(object):
 		self.url = str(submission.short_link)
 		self.title = str(submission).split(':: ')[1]
 
-def get_hot(subreddits):
+def get_hot(subreddits, lim):
 	subs = []
 	reddit = praw.Reddit(user_agent='Reddit Summery 1.0 by /u/xXaoSs')
 	for sub in subreddits:
 		sub = Subreddit(sub)
-		submits_gen = reddit.get_subreddit(sub.name).get_hot(limit=1)
+		submits_gen = reddit.get_subreddit(sub.name).get_hot(limit=lim)
 		[sub.add_submission(post) for post in submits_gen]
 		subs.append(sub)
-	return subs
+	msg = 'Subreddit: '
+	for sub in subs:
+		msg += sub.reddit_name + ' | '
+	msg = msg[:-2]
+	return subs, str(msg)
