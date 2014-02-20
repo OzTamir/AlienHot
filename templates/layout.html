@@ -4,18 +4,22 @@
       <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
       <title>AlienHot - Get it while it's hot</title>
   </head>
-  <body>
+  <body style="background-image:url({{ url_for('static', filename='img/background.png') }}); background-repeat:repeat;">
     <header>
       <div class="container">
         <a href="index.html"><h1 class="logo"><img src="{{ url_for('static', filename='img/logo.png') }}"></a></h1></a>
       </div>
     </header>
-    <br>
+    <br><br><br>
     <div class="container">
       {% block content %}
       {% endblock %}
     </div>
     <br>
-    <center><a href="https://github.com/OzTamir"><h5>Built by Oz Tamir</h5></a></center>
+    <center>
+      <a href="https://github.com/OzTamir"><img src="{{ url_for('static', filename='img/github.png') }}">
+      <h5>Built by Oz Tamir</h5>
+      </a>
+    </center>
   </body>
 </html>

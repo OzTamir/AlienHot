@@ -15,19 +15,24 @@ header {
   width: 100%;
   opacity: .9;
   margin-bottom: 10px;
-  text-algin: center
+  text-algin: center;
+  position: fixed;
 }
 
 header h1.logo {
   margin: 0;
   font-size: 1.7em;
   color: #fff;
+  opacity: 100%;
   text-transform: uppercase;
+    position: fixed;
 }
 
 header h1.logo:hover {
   color: #fff;
+  opacity: 100%;
   text-decoration: none;
+    position: fixed;
 }
 
 /*
