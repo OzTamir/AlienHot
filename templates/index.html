@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="jumbo">
+    <center>
+    <h1>Reddit Summery</h1>
+    <hr>
+	    {% for sub in subreddits %}
+	    	<h3><b>{{ sub.reddit_name }}</b></h3>
+	    	{% for post in sub.submissions %}
+	        	<a href="{{ post.url }}">{{ post.title }}</a>
+	        {% endfor %}
+	        <hr>
+	    {% endfor %}
+    </center>
+</div>
+{% endblock %}
