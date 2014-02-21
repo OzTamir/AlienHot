@@ -1,0 +1,29 @@
+<div class="jumbo">
+    <center>
+    <img src="{{ url_for('static', filename='img/snoo.png') }}">
+    <h1>AlienHot</h1>
+    <h4>{{ lst }}</h4>
+	<form action="{{ url_for('add_sub') }}" method=post class=add_sub>
+		<dd><input type=text name=subreddit><input type=submit value=Add!>
+		</dl>
+	</form>
+	<br>
+	<div class="sub">
+	    {% for sub in subreddits %}
+	    	<b>{{ sub.reddit_name }}</b>
+	    	 - 
+	    	{% for post in sub.submissions %}
+	        	<a href="{{ post.url }}">{{ post.title }}</a>
+	        {% endfor %}
+	        <br>
+	    {% endfor %}
+	</div>
+	<br>
+	<hr>
+	<form action="{{ url_for('change_amount') }}" method=post class=change_amount>
+		<dt>By default, AlienHot fetch the top post from each subreddit - but you can get more!</dt>
+		<dd><input type=text name=amount><input type=submit value=Change Amount></dd>
+		</dl>
+	</form>
+    </center>
+</div>

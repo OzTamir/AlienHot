@@ -6,10 +6,17 @@ class Reddit(object):
 		self.subs = subs
 		self._subs = []
 		self.limit = limit
+		self.is_logged = 0
+		self.username = ''
 	def login(self, user, password):
+		self.is_logged = 1
+		self.username = str(user)
 		self.r.login(str(user), str(password))
 		self._subs = list(self.subs)
 		self.subs = self.r.get_my_subreddits()
+	def logout(self):
+		self.is_logged = 0
+		self.subs = list(self._subs)
 	def add(self, sub):
 		self.subs.append(str(sub))
 	def remove(self, sub):
