@@ -9,19 +9,18 @@
 		<dd><input type=text name=subreddit><input type=submit value=Add!>
 		</dl>
 	</form>
+	<br>
+	<div class="sub">
 	    {% for sub in subreddits %}
-	    	<hr>
-	    	<h3><b>{{ sub.reddit_name }}</b></h3>
-			<form action="{{ url_for('remove_sub') }}" method=post class=remove_sub>
-			<button name="subreddit" value="{{ sub.name }}">Remove Subreddit</button>
-			</form>
-			<br>
+	    	<b>{{ sub.reddit_name }}</b>
+	    	 - 
 	    	{% for post in sub.submissions %}
 	        	<a href="{{ post.url }}">{{ post.title }}</a>
-	        	<br>
 	        {% endfor %}
 	        <br>
 	    {% endfor %}
+	</div>
+	<br>
 	<hr>
 	<form action="{{ url_for('change_amount') }}" method=post class=change_amount>
 		<dt>By default, AlienHot fetch the top post from each subreddit - but you can get more!

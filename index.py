@@ -1,9 +1,10 @@
 from flask import Flask, render_template, url_for, request, redirect, flash
 from reddit import get_hot
+
 app = Flask(__name__)
 
 subs = ['learnpython', 'programming']
-LIMIT = 5
+LIMIT = 1
 
 @app.route('/remove', methods=['POST'])
 def remove_sub():
@@ -29,6 +30,8 @@ def add_sub():
 @app.route('/')
 def index():
 	sub_list, sub_msg = get_hot(subs, LIMIT)
+	if LIMIT == 1:
+		return render_template('list_em.html', subreddits = sub_list, lst = sub_msg)
 	return render_template('index.html', subreddits = sub_list, lst = sub_msg)
 
 if __name__ == '__main__':

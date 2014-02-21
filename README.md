@@ -4,7 +4,7 @@ AlienHot
 Get a list of hot posts from your favourite subreddits with this little Flask application.
 
 ![AlienHot Preview](https://raw2.github.com/OzTamir/AlienHot/master/static/img/preview.png)
-
+----
 
 Requirements:
 ----
