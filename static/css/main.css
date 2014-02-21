@@ -12,6 +12,12 @@ a:link {
   text-decoration:none;
 }
 
+header div.login {
+  display: inline-block;
+  padding-left: 70%;
+  padding-top: 15px;
+}
+
 header {
   background-color: #5F99CF;
   height: 45px;
@@ -21,6 +27,7 @@ header {
   padding-bottom: 10px;
   text-algin: center;
   position: fixed;
+
 }
 
 header h1.logo {
@@ -29,6 +36,7 @@ header h1.logo {
   color: #fff;
   opacity: 100%;
   text-transform: uppercase;
+  position: fixed;
 }
 
 header h1.logo:hover {
