@@ -27,8 +27,11 @@ def get_hot(subreddits, lim):
 		submits_gen = reddit.get_subreddit(sub.name).get_hot(limit=lim)
 		[sub.add_submission(post) for post in submits_gen]
 		subs.append(sub)
-	msg = 'Subreddits: '
-	for sub in subs:
-		msg += sub.reddit_name + ' | '
-	msg = msg[:-2]
+	if len(subs) == 0:
+		msg = 'No subreddits selected :('
+	else:
+		msg = 'Subreddits: '
+		for sub in subs:
+			msg += sub.reddit_name + ' | '
+		msg = msg[:-2]
 	return subs, str(msg)

@@ -7,7 +7,11 @@
   <body style="background-image:url({{ url_for('static', filename='img/background.png') }}); background-repeat:repeat;">
     <header>
       <div class="container">
-        <a href="index.html"><h1 class="logo"><img src="{{ url_for('static', filename='img/logo.png') }}"></a></h1></a>
+        <a href="{{ url_for('index') }}">
+        <h1 class="logo"><img src="{{ url_for('static', filename='img/logo.png') }}">
+         | Get it while it's hot
+        </h1>
+        </a>
       </div>
     </header>
     <br><br><br>

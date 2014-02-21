@@ -12,6 +12,10 @@
 	    {% for sub in subreddits %}
 	    	<hr>
 	    	<h3><b>{{ sub.reddit_name }}</b></h3>
+			<form action="{{ url_for('remove_sub') }}" method=post class=remove_sub>
+			<button name="subreddit" value="{{ sub.name }}">Remove Subreddit</button>
+			</form>
+			<br>
 	    	{% for post in sub.submissions %}
 	        	<a href="{{ post.url }}">{{ post.title }}</a>
 	        	<br>

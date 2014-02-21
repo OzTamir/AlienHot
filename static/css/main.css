@@ -8,31 +8,34 @@ body {
 /*
  * Create dark grey header with a white logo
  */
+a:link {
+  text-decoration:none;
+}
 
 header {
   background-color: #5F99CF;
-  height: 50px;
+  height: 45px;
   width: 100%;
   opacity: .9;
   margin-bottom: 10px;
+  padding-bottom: 10px;
   text-algin: center;
   position: fixed;
 }
 
 header h1.logo {
   margin: 0;
-  font-size: 1.7em;
+  font-size: 1.2em;
   color: #fff;
   opacity: 100%;
   text-transform: uppercase;
-    position: fixed;
 }
 
 header h1.logo:hover {
   color: #fff;
   opacity: 100%;
   text-decoration: none;
-    position: fixed;
+  position: fixed;
 }
 
 /*
