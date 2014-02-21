@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, request, redirect, flash
 from reddit import get_hot
 app = Flask(__name__)
 
-subs = ['jailbreak', 'askreddit']
+subs = ['learnpython', 'programming']
 LIMIT = 5
 
 @app.route('/remove', methods=['POST'])
