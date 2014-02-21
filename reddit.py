@@ -1,5 +1,22 @@
 import praw
 
+class Reddit(object):
+	def __init__(self, subs, limit=1):
+		self.r = praw.Reddit(user_agent='AlienHot 1.0 by /u/xXaoSs')
+		self.subs = subs
+		self._subs = []
+		self.limit = limit
+	def login(self, user, password):
+		self.r.login(str(user), str(password))
+		self._subs = list(self.subs)
+		self.subs = self.r.get_my_subreddits()
+	def add(self, sub):
+		self.subs.append(str(sub))
+	def remove(self, sub):
+		self.subs.remove(str(sub))
+	def change_amount(self, new_amount):
+		self.limit = int(new_amount)
+
 class Subreddit(object):
 	'''This class represents a single subreddit and it's hot submissions'''
 	def __init__(self, sub):
@@ -15,13 +32,14 @@ class Submission(object):
 		self.url = str(submission.short_link)
 		self.title = str(submission).split(':: ')[1]
 
-def get_hot(subreddits, lim):
+def get_hot(r_object):
 	'''
 	This function gets the lim(By default 5) hot post from each subreddit and return a list of subreddits
 	objects - each with it's own hot submissions - as well as a string with all the subreddits's names
 	'''
+	subreddits, lim = r_object.subs, r_object.limit
 	subs = []
-	reddit = praw.Reddit(user_agent='Reddit Summery 1.0 by /u/xXaoSs')
+	reddit = praw.Reddit(user_agent='AlienHot 1.0 by /u/xXaoSs')
 	for sub in subreddits:
 		sub = Subreddit(sub)
 		submits_gen = reddit.get_subreddit(sub.name).get_hot(limit=lim)
