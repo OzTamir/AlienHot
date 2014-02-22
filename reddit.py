@@ -1,4 +1,5 @@
 import praw
+from random import shuffle
 
 class Reddit(object):
 	def __init__(self, subs, limit=1):
@@ -8,6 +9,7 @@ class Reddit(object):
 		self.limit = limit
 		self.is_logged = 0
 		self.username = ''
+		self.is_defaults = 0
 	def login(self, user, password):
 		self.is_logged = 1
 		self.username = str(user)
@@ -23,6 +25,16 @@ class Reddit(object):
 		self.subs.remove(str(sub))
 	def change_amount(self, new_amount):
 		self.limit = int(new_amount)
+	def set_defaults(self):
+		if self.is_defaults:
+			self.subs = list(self._subs)
+			self.is_defaults = 0
+		else:
+			self._subs = list(self.subs)
+			self.subs = ['AdviceAnimals', 'AskReddit', 'AskScience', 'Aww', 'BestOf', 'Books', 'EarthPorn', 'ExplainLikeImFive', 'Funny', 'Gaming', \
+						'Gifs', 'IAmA', 'Movies', 'Music', 'News', 'Pics', 'Science', 'Sports', 'Technology', 'Television', 'TodayILearned', 'Videos', \
+						'WorldNews']
+			self.is_defaults = 1
 
 class Subreddit(object):
 	'''This class represents a single subreddit and it's hot submissions'''
@@ -45,6 +57,8 @@ def get_hot(r_object):
 	objects - each with it's own hot submissions - as well as a string with all the subreddits's names
 	'''
 	subreddits, lim = r_object.subs, r_object.limit
+	# Let's mix it up a bit, shell we?
+	shuffle(subreddits)
 	subs = []
 	reddit = praw.Reddit(user_agent='AlienHot 1.0 by /u/xXaoSs')
 	for sub in subreddits:

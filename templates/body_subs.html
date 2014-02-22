@@ -2,6 +2,7 @@
     <center>
     <img src="{{ url_for('static', filename='img/snoo.png') }}">
     <h1>AlienHot</h1>
+    <a href="{{ url_for('set_defaults') }}"><h4> - Default subreddits - </h4></a>
     <h4>{{ lst }}</h4>
 	<form action="{{ url_for('add_sub') }}" method=post class=add_sub>
 		<dd><input type=text name=subreddit><input type=submit value=Add!>

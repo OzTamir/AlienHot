@@ -3,15 +3,26 @@ from reddit import get_hot, Reddit
 
 app = Flask(__name__)
 
-subs = ['learnpython', 'programming']
-LIMIT = 2
+# Initial list of subreddits to work with
+subs = ['learnpython', 'programming', 'python', 'learnprogramming']
 
+# Initial number of posts to fetch from each sub
+LIMIT = 1
+
+# Our reddit object!
 reddit = Reddit(subs, LIMIT)
+
+@app.route('/defaults')
+def set_defaults():
+	global reddit
+	'''Gets called when the "Set Defaults" button is pressed'''
+	reddit.set_defaults()
+	return redirect(url_for('index'))
 
 @app.route('/remove', methods=['POST'])
 def remove_sub():
 	global reddit
-	'''Gets called when the "Remove" button underneth each sub'''
+	'''Gets called when the "Remove" button underneth a sub gets pressed'''
 	if (str(request.form['subreddit']) != '') and (str(request.form['subreddit']) in reddit.subs):
 		reddit.remove(request.form['subreddit'])
 	return redirect(url_for('index'))
@@ -54,6 +65,6 @@ def index():
 	return render_template('index.html', subreddits = sub_list, lst = sub_msg, reddit = reddit)
 
 if __name__ == '__main__':
-    app.run(port=5100,debug=True)
+    app.run(port=5200,debug=True)
 
 
