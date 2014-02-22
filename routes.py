@@ -65,6 +65,6 @@ def index():
 	return render_template('index.html', subreddits = sub_list, lst = sub_msg, reddit = reddit)
 
 if __name__ == '__main__':
-    app.run(port=5200,debug=True)
+    app.run(port=5200)
 
 

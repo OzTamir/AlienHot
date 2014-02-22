@@ -23,5 +23,6 @@ Installation:
 	- Get Flask: https://github.com/mitsuhiko/flask
 	- Get PRAW: https://github.com/praw-dev/praw/
 	- Get AlienHot: https://github.com/OzTamir/AlienHot
-	And you are good to go!
+	- Run /AlienHot/routes.py
+	- Browse to 127.0.0.1:5000
 
