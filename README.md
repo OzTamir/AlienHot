@@ -24,5 +24,6 @@ Installation:
 	- Get PRAW: https://github.com/praw-dev/praw/
 	- Get AlienHot: https://github.com/OzTamir/AlienHot
 	- Run /AlienHot/routes.py
-	- Browse to 127.0.0.1:5000
+	- Browse to 127.0.0.1:5200
+	You are good to go!
 
